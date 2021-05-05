@@ -1,0 +1,47 @@
+<div class="jumbotron form">
+<div class='row'>
+  <div class="col">
+    <label>Name</label>
+    <input [(ngModel)]='task.name' id='name' #name="ngModel" type='text' class="form-control" required><br>
+    <label>Characters used {{task.name.length}}/100</label><br>
+  <div *ngIf=" name.touched && name.invalid" class="alert alert-danger">
+  <div *ngIf=" name.errors.required"> Name is required</div>
+  </div>
+    <label>Priority</label>
+    <input [(ngModel)]='task.priority'  type='range'  min='1' max="30" class="form-control"><br>
+    <label>Start Date</label>
+    <input [(ngModel)]='task.startDate'  type='date' class="form-control"><br>
+    <label>End Date</label>
+    <input [(ngModel)]='task.endDate'  type='date' class="form-control"><br>
+  </div>
+  <div class="col">
+    <label>Parent</label>
+    <input [(ngModel)]='task.parent'  type='text' class="form-control"><br>
+    <label>Status</label>
+    <select [(ngModel)]='task.status' class="form-control"><br>
+      <option>TODO</option>
+      <option>DOING</option>
+      <option>DONE</option>
+      </select>
+    <label>Occurrence</label>
+    <select [(ngModel)]='task.occurrence' class="form-control"><br>
+      <option>ONCE</option>
+      <option>HOURLY</option>
+      <option>DAILY</option>
+      <option>WEEKLY</option>
+      <option>MONHLY</option>
+      <option>YEARLY</option>
+      </select>
+    <label>Type</label>
+    <select [(ngModel)]='task.type' class="form-control"><br>
+      <option>DEVELOPMENT</option>
+      <option>BUSINESS</option>
+      <option>FINANCE</option>
+      </select>
+      <button class=" btn btn-primary" (click)='save()'>Submit</button>
+  </div>
+</div>
+</div>
+
+
+
