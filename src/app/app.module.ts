@@ -9,8 +9,10 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { TaskFormComponent } from'./task-form/task-form.component';
+import { ViewComponent } from './view/view.component';
 const appRoutes: Routes= [
   {path:'create',component: TaskFormComponent},
+  { path: 'view', component: ViewComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent }
 ]
@@ -20,9 +22,10 @@ const appRoutes: Routes= [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LoginComponent, 
+    LoginComponent,
     SignupComponent,
-    TaskFormComponent
+    TaskFormComponent,
+    ViewComponent
   ],
   imports: [RouterModule.forRoot(
     appRoutes,
