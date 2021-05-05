@@ -1,0 +1,50 @@
+<div class="jumbotron">
+  <div class="row">
+    <div class="col">
+  <label>Search by Name</label>
+  <input [(ngModel)]='task.name' name="name" id="nameSearch"  class="form-control" >
+  <label>Search by Priority</label>
+  <input [(ngModel)]='task.priority' name="priority" id="prioritySearch"  class="form-control" >
+  <label>Search by Parent</label>
+  <input [(ngModel)]='task.parent' name="parent"  id="parentSearch"  class="form-control" >
+</div>
+<div class="col">
+  <label>Search by Sart Date</label>
+  <input [(ngModel)]='task.startDate' name="startDate" id="startDateSearch"  class="form-control" >
+  <label>Search by End Date</label>
+  <input [(ngModel)]='task.endDate' name="endDate"id=endDateSearch class="form-control" >
+  </div>
+</div>
+<button  class="btn btn-primary form-control"> Search</button>
+<h2 class="text-center">TASK INFORMATION</h2>
+<div class=" table-responsive">
+  <table class="table">
+  <thead>
+  <th>Name</th>
+  <th>Priority</th>
+  <th>Start Date</th>
+  <th>End Date</th>
+  <th>Parent</th>
+  <th>Status</th>
+  <th>Type </th>
+  <th>Occurrence </th>
+  <th>Edit </th>
+  <th>End </th>
+</thead>
+<tbody>
+  <tr *ngFor ='let task of taskArray; index as i'>
+    <td>{{task.name}}</td>
+    <td>{{task.priority}}</td>
+    <td>{{task.startDate}}</td>
+    <td>{{task.endDate}}</td>
+    <td>{{task.parent}}</td>
+    <td>{{task.status}}</td>
+    <td>{{task.type}}</td>
+    <td>{{task.occurrence}}</td>
+    <td><button class="btn btn-danger">Edit task</button></td>
+    <td><button class="btn btn-danger">End task</button></td>
+  </tr>
+</tbody>
+</table>
+</div>
+
