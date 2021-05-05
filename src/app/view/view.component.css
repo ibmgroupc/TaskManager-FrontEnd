@@ -1,0 +1,17 @@
+table{
+  border-collapse:collapse ;
+  border: 1px solid black;
+  }
+th,td{
+  border: 1px solid black;
+  text-align:left;
+}
+tr:nth-child(odd){
+  background-color:cyan;
+}
+tr, td :hover{
+background-color:lightseagreen;
+}
+button{
+  width:40%;
+}
