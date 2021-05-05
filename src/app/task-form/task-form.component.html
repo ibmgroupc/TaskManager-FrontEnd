@@ -7,7 +7,7 @@
   <div *ngIf=" name.touched && name.invalid" class="alert alert-danger">
   <div *ngIf=" name.errors.required"> Name is required</div>
   </div>
-    <label>Priority</label>
+    <label>Priority {{task.priority}}</label>
     <input [(ngModel)]='task.priority'  type='range'  min='1' max="30" class="form-control"><br>
     <label>Start Date</label>
     <input [(ngModel)]='task.startDate'  type='date' class="form-control"><br>
