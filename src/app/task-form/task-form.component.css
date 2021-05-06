@@ -4,3 +4,6 @@ button{
 .subtext{
   font-size: smaller;
 }
+span{
+  color: red;
+}

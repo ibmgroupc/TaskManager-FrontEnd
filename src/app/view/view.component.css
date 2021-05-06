@@ -12,7 +12,7 @@ tr:nth-child(odd){
 tr, td :hover{
 background-color:lightseagreen;
 }
-button{
+.buttonsubmit{
   width:40%;
 }
 

@@ -8,4 +8,5 @@ export class Task{
   occurrence:string = "ONCE";
   type:string = "DEVELOPMENT";
   search:string;
+  username:string="user1";
 }
