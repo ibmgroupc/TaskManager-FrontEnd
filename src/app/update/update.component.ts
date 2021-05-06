@@ -11,12 +11,9 @@ export class UpdateComponent implements OnInit {
   task: Task = new Task();
   taskArray: any;
 
-  constructor(private taskService: TaskService) {
-    this.task.name = "Task 1";
-  }
+  constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
-    document.getElementById("btn").innerHTML = "Update";
   }
 
 }
