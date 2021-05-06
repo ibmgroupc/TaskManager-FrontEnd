@@ -13,5 +13,5 @@ export class Task{
   status:STATUS;
   occurrence:OCCURRENCE;
   type:TYPE;
-
+  search:string;
 }
