@@ -32,6 +32,12 @@ export class ViewComponent implements OnInit {
   }
 }
   ngOnInit(): void {
+    const observable=this.taskService.getAllTasks();
+    observable.subscribe(response =>{
+      console.log(response);
+      this.taskArray=response;
+  })
+
   }
 
 }

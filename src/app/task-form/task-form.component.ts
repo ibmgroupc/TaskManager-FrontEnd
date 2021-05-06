@@ -1,9 +1,6 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { Task } from '../Task';
 import { TaskService } from '../task.service';
-// import { TYPE } from '../TYPE';
-// import { STATUS } from '../STATUS';
-// import { OCCURRENCE  } from '../OCCURRENCE';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -32,5 +29,7 @@ export class TaskFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+
   }
 }

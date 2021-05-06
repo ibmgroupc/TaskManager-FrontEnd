@@ -15,6 +15,9 @@ export class TaskService {
       responseType: "text"
     });
   }
+  getAllTasks(){
+    return this.http.get(URL)
+  }
   search(value:string){
     return this.http.get(URL+'name/'+value)
   }

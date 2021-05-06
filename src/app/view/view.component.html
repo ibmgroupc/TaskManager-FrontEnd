@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
       <label>Search:</label>
-      <select [(ngModel)]='task.search' class="form-control"><br>
+      <select [(ngModel)]='task.search' class="form-control" ><br>
         <option>Name</option>
         <option>Priority</option>
         <option>Parent</option>
@@ -33,7 +33,7 @@
 </div>
 <br>
 <div class="text-center">
-<button  class="btn btn-primary form-control" (onClick)="search(task.name)"> Search</button>
+<button  class="btn btn-primary form-control buttonsubmit" (onClick)="search(task.name)"> Search</button>
 </div>
 
 <h2 class="text-center">TASK INFORMATION</h2>
@@ -48,7 +48,6 @@
   <th>Status</th>
   <th>Type </th>
   <th>Occurrence </th>
-  <th>Edit </th>
   <th>End </th>
 </thead>
 <tbody>
@@ -61,7 +60,6 @@
     <td>{{task.status}}</td>
     <td>{{task.type}}</td>
     <td>{{task.occurrence}}</td>
-    <td><button class="btn btn-danger">Edit task</button></td>
     <td><button class="btn btn-danger">End task</button></td>
   </tr>
 </tbody>
