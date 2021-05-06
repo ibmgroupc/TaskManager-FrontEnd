@@ -33,12 +33,4 @@ export class TaskFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  ngOnChanges(changes: SimpleChanges) {
-    for (let propName in changes) {
-      let change = changes[propName];
-      this.task = change.currentValue;
-    }
-  }
-
 }
