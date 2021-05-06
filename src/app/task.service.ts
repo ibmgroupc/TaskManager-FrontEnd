@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Task } from './task';
-const URL='http://localhost:8080/bug/';
+const URL='http://localhost:8080/task/';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +14,8 @@ export class TaskService {
       headers:{ "content-type":'application/json' },
       responseType: "text"
     });
+  }
+  search(value:string){
+    return this.http.get(URL+'name/'+value)
   }
 }

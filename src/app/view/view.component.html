@@ -26,14 +26,14 @@
   <label>Search by End Date</label>
   <input [(ngModel)]='task.endDate' name="endDate" id=endDateSearch type="date" class="form-control" ><br>
   </div>
-<div class="col" *ngIf='task.search=="Parent"'>
+<div class="col " *ngIf='task.search=="Parent"'>
 <label>Search by Parent</label><br>
 <input [(ngModel)]='task.parent' name="parent"  id="parentSearch" type="text" class="form-control" >
 </div>
 </div>
 <br>
 <div class="text-center">
-<button  class="btn btn-primary form-control"> Search</button>
+<button  class="btn btn-primary form-control" (onClick)="search(task.name)"> Search</button>
 </div>
 
 <h2 class="text-center">TASK INFORMATION</h2>
