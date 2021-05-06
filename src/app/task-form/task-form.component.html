@@ -2,8 +2,8 @@
 <div class='row'>
   <div class="col">
     <label>Name</label>
-    <input [(ngModel)]='task.name' id='name' #name="ngModel" type='text' class="form-control" required><br>
-    <label>Characters used {{task.name.length}}/100</label><br>
+    <input [(ngModel)]='task.name' id='name' #name="ngModel" type='text' class="form-control" required>
+    <label class="subtext">Characters used {{task.name.length}}/100</label><br>
   <div *ngIf=" name.touched && name.invalid" class="alert alert-danger">
   <div *ngIf=" name.errors.required"> Name is required</div>
   </div>
@@ -22,7 +22,7 @@
       <option>TODO</option>
       <option>DOING</option>
       <option>DONE</option>
-      </select>
+      </select><br>
     <label>Occurrence</label>
     <select [(ngModel)]='task.occurrence' class="form-control"><br>
       <option>ONCE</option>
@@ -31,15 +31,17 @@
       <option>WEEKLY</option>
       <option>MONHLY</option>
       <option>YEARLY</option>
-      </select>
+      </select><br>
     <label>Type</label>
     <select [(ngModel)]='task.type' class="form-control"><br>
       <option>DEVELOPMENT</option>
       <option>BUSINESS</option>
       <option>FINANCE</option>
-      </select>
-      <button class=" btn btn-primary" (click)='save()' id = "btn">Submit</button>
+      </select><br>
   </div>
+</div>
+<div class="text-center">
+<button class=" btn btn-primary" (click)='save()'>Save</button>
 </div>
 </div>
 
