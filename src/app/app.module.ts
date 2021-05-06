@@ -10,11 +10,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { TaskFormComponent } from'./task-form/task-form.component';
 import { ViewComponent } from './view/view.component';
+import { UpdateComponent } from './update/update.component';
 const appRoutes: Routes= [
   {path:'create',component: TaskFormComponent},
   { path: 'view', component: ViewComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'update', component: UpdateComponent}
 ]
 
 @NgModule({
@@ -25,7 +27,8 @@ const appRoutes: Routes= [
     LoginComponent,
     SignupComponent,
     TaskFormComponent,
-    ViewComponent
+    ViewComponent,
+    UpdateComponent
   ],
   imports: [RouterModule.forRoot(
     appRoutes,
