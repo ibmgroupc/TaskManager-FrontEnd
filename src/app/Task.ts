@@ -1,4 +1,5 @@
 export class Task{
+  id:any;
   name:string = "Task A";
   priority:number;
   startDate:Date;

@@ -18,4 +18,9 @@ export class TaskService {
   search(value:string){
     return this.http.get(URL+'name/'+value)
   }
+  update(task: Task, id: any) {
+    return this.http.put(URL + id, task, {
+      headers: { 'content-type': 'application/json' },
+    });
+  }
 }

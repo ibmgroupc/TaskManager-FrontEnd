@@ -13,6 +13,41 @@ export class UpdateComponent implements OnInit {
 
   constructor(private taskService: TaskService) {}
 
+  getTask(){
+    if(this.task.name){
+      const observable = this.taskService.search(this.task.name);
+      observable.subscribe(
+        (response) => {
+          this.taskArray = response;
+          this.task = this.taskArray[0];
+          if(this.taskArray[0] == undefined){
+            alert("No such task found!");
+          }
+        },
+        (error) => {
+          console.log(error);
+          alert("Error!")
+        }
+      );
+    }
+    else{
+      alert("Please enter task name.");
+    }
+  }
+
+  update(){
+    const observable = this.taskService.update(this.task, this.task.id);
+    observable.subscribe(
+      (response) =>{
+        alert("Task updated!");
+      },
+      (error) => {
+        console.log(error);
+        alert("Error occurred!")
+      }
+    );
+  }
+
   ngOnInit(): void {
   }
 
