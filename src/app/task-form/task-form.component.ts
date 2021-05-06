@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { Task } from '../Task';
 import { TaskService } from '../task.service';
 // import { TYPE } from '../TYPE';
@@ -16,7 +16,7 @@ export class TaskFormComponent implements OnInit {
 
   constructor(private taskService: TaskService,
     private route:ActivatedRoute) { }
-  task:Task=new Task();
+    @Input() task: Task = new Task();
   taskArray:any=[];
   save(){
 
@@ -32,6 +32,13 @@ export class TaskFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    for (let propName in changes) {
+      let change = changes[propName];
+      this.task = change.currentValue;
+    }
   }
 
 }
