@@ -2,20 +2,25 @@
   <div class="row">
     <div class="col">
   <label>Search by Name</label>
-  <input [(ngModel)]='task.name' name="name" id="nameSearch"  class="form-control" >
+  <input [(ngModel)]='task.name' name="name" id="nameSearch"  class="form-control" ><br>
   <label>Search by Priority</label>
-  <input [(ngModel)]='task.priority' name="priority" id="prioritySearch"  class="form-control" >
-  <label>Search by Parent</label>
-  <input [(ngModel)]='task.parent' name="parent"  id="parentSearch"  class="form-control" >
+  <input [(ngModel)]='task.priority' name="priority" id="prioritySearch"  class="form-control" ><br>
 </div>
 <div class="col">
   <label>Search by Sart Date</label>
-  <input [(ngModel)]='task.startDate' name="startDate" id="startDateSearch"  class="form-control" >
+  <input [(ngModel)]='task.startDate' name="startDate" id="startDateSearch"  class="form-control" ><br>
   <label>Search by End Date</label>
-  <input [(ngModel)]='task.endDate' name="endDate"id=endDateSearch class="form-control" >
+  <input [(ngModel)]='task.endDate' name="endDate" id=endDateSearch class="form-control" ><br>
   </div>
 </div>
+<div class="parentStyle">
+<label>Search by Parent</label><br>
+<input [(ngModel)]='task.parent' name="parent"  id="parentSearch"  class="form-control" >
+</div>
+<br>
+<div class="text-center">
 <button  class="btn btn-primary form-control"> Search</button>
+</div>
 <h2 class="text-center">TASK INFORMATION</h2>
 <div class=" table-responsive">
   <table class="table">
