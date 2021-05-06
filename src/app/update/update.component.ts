@@ -15,7 +15,7 @@ export class UpdateComponent implements OnInit {
 
   getTask(){
     if(this.task.name){
-      const observable = this.taskService.getTasksByName(this.task.name);
+      const observable = this.taskService.search(this.task.name);
       observable.subscribe(
         (response) => {
           this.taskArray = response;

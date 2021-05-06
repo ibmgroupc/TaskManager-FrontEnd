@@ -18,9 +18,6 @@ export class TaskService {
   search(value:string){
     return this.http.get(URL+'name/'+value)
   }
-  getTasksByName(name: String){
-    return this.http.get(URL + 'name/' + name);
-  }
   update(task: Task, id: any) {
     return this.http.put(URL + id, task, {
       headers: { 'content-type': 'application/json' },
