@@ -1,28 +1,41 @@
 <div class="jumbotron form">
+  <label>*Required Fields</label>
 <div class='row'>
   <div class="col">
-    <label>Name</label>
-    <input [(ngModel)]='task.name' id='name' #name="ngModel" type='text' class="form-control" required>
+    <label>Name*</label>
+    <input [(ngModel)]='task.name' id='name' #name="ngModel" type='text' class="form-control" maxlength="100" required>
     <label class="subtext">Characters used {{task.name.length}}/100</label><br>
-  <div *ngIf=" name.touched && name.invalid" class="alert alert-danger">
-  <div *ngIf=" name.errors.required"> Name is required</div>
-  </div>
-    <label>Priority {{task.priority}}</label>
-    <input [(ngModel)]='task.priority'  type='range'  min='1' max="30" class="form-control"><br>
-    <label>Start Date</label>
-    <input [(ngModel)]='task.startDate'  type='date' class="form-control"><br>
-    <label>End Date</label>
-    <input [(ngModel)]='task.endDate'  type='date' class="form-control"><br>
+   <div *ngIf=" name.touched && name.invalid" class="alert alert-danger">
+    <div *ngIf=" name.errors.required"> Name is required</div>
+    </div>
+    <label>Priority* {{task.priority}}</label>
+    <input [(ngModel)]='task.priority' #priority="ngModel" type='range'  min='1' max="30" class="form-control" required><br>
+    <label>Start Date*</label>
+    <input [(ngModel)]='task.startDate' #startDate="ngModel" type='date' class="form-control" required><br>
+    <div *ngIf=" startDate.touched && startDate.invalid" class="alert alert-danger">
+      <div *ngIf="startDate.errors.required"> Start Date is required</div>
+      </div>
+    <label>End Date*</label>
+    <input [(ngModel)]='task.endDate'  #endDate="ngModel" type='date' class="form-control" required><br>
+    <div *ngIf="endDate.touched && endDate.invalid" class="alert alert-danger">
+      <div *ngIf="endDate.errors.required">End Date is required</div>
+      </div>
   </div>
   <div class="col">
-    <label>Parent</label>
-    <input [(ngModel)]='task.parent'  type='text' class="form-control"><br>
-    <label>Status</label>
-    <select [(ngModel)]='task.status' class="form-control"><br>
+    <label>Parent*</label>
+    <input [(ngModel)]='task.parent'  #parent="ngModel"  type='text' class="form-control" required><br>
+    <div *ngIf="parent.touched && parent.invalid" class="alert alert-danger">
+      <div *ngIf="parent.errors.required">Parent is required</div>
+      </div>
+    <label>Status*</label>
+    <select [(ngModel)]='task.status'#status="ngModel" class="form-control" required><br>
       <option>TODO</option>
       <option>DOING</option>
       <option>DONE</option>
       </select><br>
+      <div *ngIf="status.touched && status.invalid" class="alert alert-danger">
+        <div *ngIf="status.errors.required">End Date is required</div>
+        </div>
     <label>Occurrence</label>
     <select [(ngModel)]='task.occurrence' class="form-control"><br>
       <option>ONCE</option>

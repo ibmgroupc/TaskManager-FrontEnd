@@ -7,5 +7,5 @@ export class Task{
   status:string = "TODO";
   occurrence:string = "ONCE";
   type:string = "DEVELOPMENT";
-
+  search:string;
 }
