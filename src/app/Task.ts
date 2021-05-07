@@ -4,7 +4,7 @@ export class Task{
   priority:number=15;
   startDate:Date;
   endDate:Date;
-  parent:String;
+  parent:string="No";
   status:string = "TODO";
   occurance:string = "ONCE";
   type:string = "DEVELOPMENT";

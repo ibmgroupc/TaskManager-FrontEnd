@@ -18,21 +18,30 @@ export class TaskFormComponent implements OnInit {
   taskArray:any=[];
   //create task
   save(){
-    const promise=this.taskService.save(this.task);
-    promise.subscribe(response=>{
+    const observable=this.taskService.search(this.task.parent,"name");
+    observable.subscribe(response => {
+      console.log(response);
+      if(response==0 && this.task.parent!="No" && this.task.parent!="no"){
+        Swal.fire("Parent should be given No or an existing task");
+      }
+      else{
+      const observable=this.taskService.save(this.task);
+      observable.subscribe(response=>{
       console.log(response);
       Swal.fire("Task Created");
       this.taskArray.push(Object.assign({},this.task));
-    },
-    error=>{
-      if(error.status != 'OK'){
-        Swal.fire("Error! " + error.headers.get("error"));
-      }
-      else{
-      Swal.fire("Error")
-      }
+        },
+      error=>{
+            if(error.status != 'OK'){
+                    Swal.fire("Error! " + error.headers.get("error"));
+                       }
+               else{
+                  Swal.fire("Error")
+                    }
     })
   }
+    })
+}
   ngOnInit(): void {
   }
 }
