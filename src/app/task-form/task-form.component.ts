@@ -2,6 +2,7 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { Task } from '../Task';
 import { TaskService } from '../task.service';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -20,11 +21,11 @@ export class TaskFormComponent implements OnInit {
     const promise=this.taskService.save(this.task);
     promise.subscribe(response=>{
       console.log(response);
-      alert("Task added");
+      Swal.fire("Task Created");
       this.taskArray.push(Object.assign({},this.task));
     },
     error=>{
-      console.log(error);
+      Swal.fire("Error");
     })
   }
   ngOnInit(): void {

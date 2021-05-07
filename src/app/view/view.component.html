@@ -3,6 +3,7 @@
     <div class="col">
       <label>Search:</label>
       <select [(ngModel)]='task.searchField' class="form-control" ><br>
+        <option>Display all tasks</option>
         <option>Name</option>
         <option>Priority</option>
         <option>Parent</option>
@@ -12,23 +13,38 @@
     </div>
 <div class="col"  *ngIf='task.searchField=="Name"'>
 <label>Search by Name</label>
-<input [(ngModel)]='task.name' name="name" id="nameSearch" type="text" class="form-control" ><br>
+<input [(ngModel)]='task.name' name="name"  #name="ngModel" id="nameSearch" type="text" class="form-control"  required><br>
+<div *ngIf=" name.touched && name.invalid" class="alert alert-danger">
+  <div *ngIf=" name.errors.required"> Enter Name</div>
+  </div>
 </div>
 <div class="col"  *ngIf='task.searchField=="Priority"'>
   <label>Search by Priority</label>
-  <input [(ngModel)]='task.priority' name="priority" id="prioritySearch" type="number" min="0" max="30" class="form-control" ><br>
+  <input [(ngModel)]='task.priority' name="priority"  #priority="ngModel" id="prioritySearch" type="number" min="0" max="30" class="form-control" required><br>
+  <div *ngIf=" priority.touched && priority.invalid" class="alert alert-danger">
+    <div *ngIf=" priority.errors.required"> Enter Priority</div>
+    </div>
 </div>
 <div class="col" *ngIf='task.searchField=="StartDate"'>
   <label>Search by Start Date</label>
-  <input [(ngModel)]='task.startDate' name="startDate" id="startDateSearch" type="date" class="form-control" ><br>
+  <input [(ngModel)]='task.startDate' name="startDate"  #startDate="ngModel" id="startDateSearch" type="date" class="form-control" required ><br>
+  <div *ngIf=" startDate.touched && startDate.invalid" class="alert alert-danger">
+    <div *ngIf="startDate.errors.required">Enter Start Date</div>
+    </div>
 </div>
 <div class="col" *ngIf='task.searchField=="EndDate"'>
   <label>Search by End Date</label>
-  <input [(ngModel)]='task.endDate' name="endDate" id=endDateSearch type="date" class="form-control" ><br>
-  </div>
-<div class="col " *ngIf='task.searchField=="Parent"'>
+  <input [(ngModel)]='task.endDate' name="endDate" #endDate="ngModel" id=endDateSearch type="date" class="form-control" required ><br>
+  <div *ngIf="endDate.touched && endDate.invalid" class="alert alert-danger">
+    <div *ngIf="endDate.errors.required">Enter End Date</div>
+    </div>
+</div>
+<div class="col" *ngIf='task.searchField=="Parent"'>
 <label>Search by Parent</label><br>
-<input [(ngModel)]='task.parent' name="parent"  id="parentSearch" type="text" class="form-control" >
+<input [(ngModel)]='task.parent' name="parent"  id="parentSearch"  #parent="ngModel"  type="text" class="form-control" required >
+<div *ngIf="parent.touched && parent.invalid" class="alert alert-danger">
+    <div *ngIf="parent.errors.required">Enter Parent</div>
+</div>
 </div>
 </div>
 <br>
@@ -48,7 +64,9 @@
   <th>Status</th>
   <th>Type </th>
   <th>Occurrence </th>
-  <th>End </th>
+  <th>Edit</th>
+  <th>End</th>
+  <th>Delete</th>
 </thead>
 <tbody>
   <tr *ngFor ='let task of taskArray; index as i'>
@@ -60,7 +78,9 @@
     <td>{{task.status}}</td>
     <td>{{task.type}}</td>
     <td>{{task.occurrence}}</td>
-    <td><button class="btn btn-danger">End task</button></td>
+    <td><button class="btn btn-success">Edit</button></td>
+    <td><button class="btn btn-primary">End</button></td>
+    <td><button class="btn btn-danger">Delete</button></td>
   </tr>
 </tbody>
 </table>
