@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../Task';
 import { TaskService } from '../task.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update',
@@ -20,30 +21,34 @@ export class UpdateComponent implements OnInit {
         (response) => {
           this.taskArray = response;
           this.task = this.taskArray[0];
+          this.task.startdate = this.task.startDate.toString().split('T')[0];
+          this.task.enddate = this.task.endDate.toString().split('T')[0];
           if(this.taskArray[0] == undefined){
-            alert("No such task found!");
+            Swal.fire("No such task found!");
           }
         },
         (error) => {
           console.log(error);
-          alert("Error!")
+          Swal.fire("Error!")
         }
       );
     }
     else{
-      alert("Please enter task name.");
+      Swal.fire("Please enter task name.");
     }
   }
 
   update(){
+    this.task.startDate = new Date(this.task.startdate);
+    this.task.endDate = new Date(this.task.enddate);
     const observable = this.taskService.update(this.task, this.task.id);
     observable.subscribe(
       (response) =>{
-        alert("Task updated!");
+        Swal.fire("Task updated!");
       },
       (error) => {
         console.log(error);
-        alert("Error occurred!")
+        Swal.fire("Error occurred!")
       }
     );
   }
