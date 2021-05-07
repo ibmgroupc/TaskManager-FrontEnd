@@ -75,9 +75,9 @@
     <td>{{task.startDate | date}}</td>
     <td>{{task.endDate | date}}</td>
     <td>{{task.parent}}</td>
-    <td>{{task.status}}</td>
-    <td>{{task.type}}</td>
-    <td>{{task.occurance}}</td>
+    <td>{{task.status |titlecase}}</td>
+    <td>{{task.type|titlecase}}</td>
+    <td>{{task.occurance|titlecase}}</td>
     <td><button class="btn btn-success">Edit</button></td>
     <td><button class="btn btn-primary">End</button></td>
     <td><button class="btn btn-danger"  (click)="deleteTask(task.id,i)">Delete</button></td>
