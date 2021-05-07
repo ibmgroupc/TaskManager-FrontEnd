@@ -2,7 +2,7 @@
   <div class='row'>
     <div class="col">
       <label>Name<span style = "color: red">*</span></label>
-      <input [(ngModel)]='task.name' id='name' #name="ngModel" type='text' class="form-control" required>
+      <input [(ngModel)]='task.name' id='name' #name="ngModel" type='text' class="form-control" (blur) = "this.getTask()" required>
       <label style = "font-size: smaller; margin-top: 2px;">Characters used {{task.name.length}}/100</label><br>
     <div *ngIf=" name.touched && name.invalid" class="alert alert-danger">
     <div *ngIf=" name.errors.required"> Name is required</div>
@@ -10,9 +10,9 @@
       <label>Priority<span style = "color: red">*</span> {{task.priority}}</label>
       <input [(ngModel)]='task.priority'  type='range'  min='1' max="30" class="form-control"><br>
       <label>Start Date<span style = "color: red">*</span></label>
-      <input [(ngModel)]='task.startDate'  type='date' class="form-control"><br>
+      <input [(ngModel)]='task.startdate'  type='date' class="form-control"><br>
       <label>End Date<span style = "color: red">*</span></label>
-      <input [(ngModel)]='task.endDate'  type='date' class="form-control"><br>
+      <input [(ngModel)]='task.enddate'  type='date' class="form-control"><br>
     </div>
     <div class="col">
       <label>Parent<span style = "color: red">*</span></label>
@@ -44,6 +44,6 @@
   </div>
 
   <div id="divbtn">
-  <button class=" btn btn-primary form-control">Update</button>
+  <button class=" btn btn-primary form-control" (click) = "this.update()">Update</button>
 </div>
   </div>

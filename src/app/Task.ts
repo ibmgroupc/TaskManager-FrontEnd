@@ -10,4 +10,6 @@ export class Task{
   type:string = "DEVELOPMENT";
   search:string;
   username:string="user1";
+  startdate: string;
+  enddate: string;
 }
