@@ -9,7 +9,7 @@
     <div *ngIf=" name.errors.required"> Name is required</div>
     </div>
     <label>Priority<span>*</span> {{task.priority}}</label>
-    <input [(ngModel)]='task.priority' #priority="ngModel" type='range'  min='1' max="30" class="form-control" required><br>
+    <input [(ngModel)]='task.priority' #priority="ngModel" type='range'  min='1' max="30"  class="form-control" required><br>
     <label>Start Date<span>*</span></label>
     <input [(ngModel)]='task.startDate' #startDate="ngModel" type='date' class="form-control" required><br>
     <div *ngIf=" startDate.touched && startDate.invalid" class="alert alert-danger">
@@ -37,7 +37,7 @@
         <div *ngIf="status.errors.required">End Date is required</div>
         </div>
     <label>Occurrence</label>
-    <select [(ngModel)]='task.occurrence' class="form-control"><br>
+    <select [(ngModel)]='task.occurance' class="form-control"><br>
       <option>ONCE</option>
       <option>HOURLY</option>
       <option>DAILY</option>

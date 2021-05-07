@@ -15,8 +15,8 @@ export class TaskFormComponent implements OnInit {
     private route:ActivatedRoute) { }
     @Input() task: Task = new Task();
   taskArray:any=[];
+  //create task
   save(){
-
     const promise=this.taskService.save(this.task);
     promise.subscribe(response=>{
       console.log(response);
@@ -27,9 +27,6 @@ export class TaskFormComponent implements OnInit {
       console.log(error);
     })
   }
-
   ngOnInit(): void {
-
-
   }
 }
