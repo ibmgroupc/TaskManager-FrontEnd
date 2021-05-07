@@ -26,4 +26,7 @@ export class TaskService {
       headers: { 'content-type': 'application/json' },
     });
   }
+  deleteTask(taskId:String){
+    return this.http.delete(URL+taskId);
+  }
 }

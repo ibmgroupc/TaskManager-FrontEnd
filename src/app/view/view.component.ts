@@ -57,6 +57,36 @@ export class ViewComponent implements OnInit {
     )
   }
   }
+  //delete task
+  deleteTask(taskId:string,index:number){
+    Swal.fire({
+      title: 'Are you sure want to delete task?',
+      text: 'You will not be able to recover this task!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes,delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        const observable=this.taskService.deleteTask(taskId);
+        observable.subscribe(response => {
+          this.taskArray.splice(index,1);
+      } )
+        Swal.fire(
+          'Deleted!',
+          'Task has been deleted.',
+          'success'
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Task is not deleted :)',
+          'error'
+        )
+      }
+    })
+
+  }
   ngOnInit(): void {
     //display all tasks on page load
     const observable=this.taskService.getAllTasks();
