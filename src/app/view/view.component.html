@@ -72,12 +72,12 @@
   <tr *ngFor ='let task of taskArray; index as i'>
     <td>{{task.name}}</td>
     <td>{{task.priority}}</td>
-    <td>{{task.startDate}}</td>
-    <td>{{task.endDate}}</td>
+    <td>{{task.startDate | date}}</td>
+    <td>{{task.endDate | date}}</td>
     <td>{{task.parent}}</td>
     <td>{{task.status}}</td>
     <td>{{task.type}}</td>
-    <td>{{task.occurrence}}</td>
+    <td>{{task.occurance}}</td>
     <td><button class="btn btn-success">Edit</button></td>
     <td><button class="btn btn-primary">End</button></td>
     <td><button class="btn btn-danger"  (click)="deleteTask(task.id,i)">Delete</button></td>
