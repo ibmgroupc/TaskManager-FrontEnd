@@ -16,7 +16,9 @@
     </div>
     <div class="col">
       <label>Parent<span style = "color: red">*</span></label>
-      <input [(ngModel)]='task.parent'  type='text' class="form-control"><br>
+      <input [(ngModel)]='task.parent' id ="parent" name="parent" #parent="ngModel" type='text' class="form-control" required><br>
+      <div *ngIf=" parent.touched && parent.invalid" class="alert alert-danger">
+      <div *ngIf=" parent.errors.required"> Parent is required</div></div>
       <label>Status<span style = "color: red">*</span></label>
       <select [(ngModel)]='task.status' class="form-control"><br>
         <option>TODO</option>

@@ -47,8 +47,12 @@ export class UpdateComponent implements OnInit {
         Swal.fire("Task updated!");
       },
       (error) => {
-        console.log(error);
+        if(error.status != 'OK'){
+          Swal.fire("Error! " + error.headers.get("error"));
+        }
+        else{
         Swal.fire("Error occurred!")
+        }
       }
     );
   }
