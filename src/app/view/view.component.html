@@ -80,7 +80,7 @@
     <td>{{task.occurrence}}</td>
     <td><button class="btn btn-success">Edit</button></td>
     <td><button class="btn btn-primary">End</button></td>
-    <td><button class="btn btn-danger">Delete</button></td>
+    <td><button class="btn btn-danger"  (click)="deleteTask(task.id,i)">Delete</button></td>
   </tr>
 </tbody>
 </table>
