@@ -45,6 +45,7 @@ export class UpdateComponent implements OnInit {
     observable.subscribe(
       (response) =>{
         Swal.fire("Task updated!");
+        this.task = new Task();
       },
       (error) => {
         if(error.status != 'OK'){
