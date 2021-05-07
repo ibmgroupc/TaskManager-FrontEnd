@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../Task';
-import { TaskService } from '../task.service'
+import { TaskService } from '../task.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view',
@@ -14,11 +15,15 @@ export class ViewComponent implements OnInit {
   taskArray:any=[];
   //seacrh task by name,parent,priority,start date or end date
   search(){
-    if(this.task.searchField==null){
-      alert("Select a field to search by");
+    if(this.task.searchField==null || this.task.searchField=="Display all tasks"){
+      const observable=this.taskService.getAllTasks();
+      observable.subscribe(response =>{
+      console.log(response);
+      this.taskArray=response;
+  })
     }
     else{
-      let value;
+      let value=null;
       let searchField;
       switch(this.task.searchField){
         case "Name":value=this.task.name;
@@ -42,12 +47,12 @@ export class ViewComponent implements OnInit {
     observable.subscribe(response => {
       console.log(response);
       if(response==0){
-        alert("Task with input value not found");
+        Swal.fire("Task with input value not found");
       }
       this.taskArray=response;
     },error=>{
       console.log(error);
-      alert("error:");
+      Swal.fire("Error");
      }
     )
   }
