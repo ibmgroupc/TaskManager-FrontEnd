@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
       <label>Search:</label>
-      <select [(ngModel)]='task.search' class="form-control" ><br>
+      <select [(ngModel)]='task.searchField' class="form-control" ><br>
         <option>Name</option>
         <option>Priority</option>
         <option>Parent</option>
@@ -10,30 +10,30 @@
         <option>EndDate</option>
         </select><br>
     </div>
-<div class="col"  *ngIf='task.search=="Name"'>
+<div class="col"  *ngIf='task.searchField=="Name"'>
 <label>Search by Name</label>
 <input [(ngModel)]='task.name' name="name" id="nameSearch" type="text" class="form-control" ><br>
 </div>
-<div class="col"  *ngIf='task.search=="Priority"'>
+<div class="col"  *ngIf='task.searchField=="Priority"'>
   <label>Search by Priority</label>
-  <input [(ngModel)]='task.priority' name="priority" id="prioritySearch" type="number" class="form-control" ><br>
+  <input [(ngModel)]='task.priority' name="priority" id="prioritySearch" type="number" min="0" max="30" class="form-control" ><br>
 </div>
-<div class="col" *ngIf='task.search=="StartDate"'>
+<div class="col" *ngIf='task.searchField=="StartDate"'>
   <label>Search by Start Date</label>
   <input [(ngModel)]='task.startDate' name="startDate" id="startDateSearch" type="date" class="form-control" ><br>
 </div>
-<div class="col" *ngIf='task.search=="EndDate"'>
+<div class="col" *ngIf='task.searchField=="EndDate"'>
   <label>Search by End Date</label>
   <input [(ngModel)]='task.endDate' name="endDate" id=endDateSearch type="date" class="form-control" ><br>
   </div>
-<div class="col " *ngIf='task.search=="Parent"'>
+<div class="col " *ngIf='task.searchField=="Parent"'>
 <label>Search by Parent</label><br>
 <input [(ngModel)]='task.parent' name="parent"  id="parentSearch" type="text" class="form-control" >
 </div>
 </div>
 <br>
 <div class="text-center">
-<button  class="btn btn-primary form-control buttonsubmit" (onClick)="search(task.name)"> Search</button>
+<button  class="btn btn-primary form-control buttonsubmit" (click)='search()'> Search</button>
 </div>
 
 <h2 class="text-center">TASK INFORMATION</h2>

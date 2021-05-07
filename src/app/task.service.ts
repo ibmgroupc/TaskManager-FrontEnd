@@ -18,7 +18,7 @@ export class TaskService {
   getAllTasks(){
     return this.http.get(URL)
   }
-  search(value:string){
-    return this.http.get(URL+'name/'+value)
+  search(value:string,searchinput:string){
+    return this.http.get(URL+searchinput+'/'+value)
   }
 }
