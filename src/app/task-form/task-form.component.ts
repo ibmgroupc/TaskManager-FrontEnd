@@ -25,7 +25,12 @@ export class TaskFormComponent implements OnInit {
       this.taskArray.push(Object.assign({},this.task));
     },
     error=>{
-      Swal.fire("Error");
+      if(error.status != 'OK'){
+        Swal.fire("Error! " + error.headers.get("error"));
+      }
+      else{
+      Swal.fire("Error")
+      }
     })
   }
   ngOnInit(): void {
