@@ -2,7 +2,7 @@
   <div class='row'>
     <div class="col">
       <label>Name<span style = "color: red">*</span></label>
-      <input [(ngModel)]='task.name' id='name' #name="ngModel" type='text' class="form-control" (blur) = "this.getTask()" required>
+      <input [(ngModel)]='task.name' id='name' #name="ngModel" type='text' class="form-control" required>
       <label style = "font-size: smaller; margin-top: 2px;">Characters used {{task.name.length}}/100</label><br>
     <div *ngIf=" name.touched && name.invalid" class="alert alert-danger">
     <div *ngIf=" name.errors.required"> Name is required</div>
@@ -32,7 +32,7 @@
         <option>HOURLY</option>
         <option>DAILY</option>
         <option>WEEKLY</option>
-        <option>MONHLY</option>
+        <option>MONTHLY</option>
         <option>YEARLY</option>
         </select>
         <br />

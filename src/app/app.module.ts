@@ -16,7 +16,7 @@ const appRoutes: Routes= [
   { path: 'view', component: ViewComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'update', component: UpdateComponent},
+  { path: 'update/:name', component: UpdateComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ]
 

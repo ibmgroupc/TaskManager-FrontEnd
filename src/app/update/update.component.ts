@@ -2,21 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from '../Task';
 import { TaskService } from '../task.service';
 import Swal from 'sweetalert2';
+import { FormGroup } from '@angular/forms';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
   styleUrls: ['./update.component.css']
 })
+
 export class UpdateComponent implements OnInit {
   task: Task = new Task();
   taskArray: any;
+  edit: FormGroup;
 
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService,
+    private router:Router,
+    private route: ActivatedRoute) {}
 
-  getTask(){
-    if(this.task.name){
-      const observable = this.taskService.search(this.task.name,'name');
+  getTask(name: string){
+      const observable = this.taskService.search(name,'name');
       observable.subscribe(
         (response) => {
           this.taskArray = response;
@@ -32,10 +37,6 @@ export class UpdateComponent implements OnInit {
           Swal.fire("Error!")
         }
       );
-    }
-    else{
-      Swal.fire("Please enter task name.");
-    }
   }
 
   update(){
@@ -45,7 +46,7 @@ export class UpdateComponent implements OnInit {
     observable.subscribe(
       (response) =>{
         Swal.fire("Task updated!");
-        this.task = new Task();
+        this.router.navigate(['/view'])
       },
       (error) => {
         if(error.status != 'OK'){
@@ -59,6 +60,10 @@ export class UpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(parameterMap => {
+      let name = parameterMap.get('name');
+      this.getTask(name);
+    })
   }
 
 }
