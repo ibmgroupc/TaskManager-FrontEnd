@@ -23,7 +23,10 @@
   </div>
   <div class="col">
     <label>Parent<span>*</span></label>
-    <input [(ngModel)]='task.parent'  #parent="ngModel"  type='text' class="form-control" required><br>
+    <input [(ngModel)]='task.parent'  #parent="ngModel"  type='text' class="form-control"  (keyup)="searchParentOnKeyUp($event)" list="SearchResults" required><br>
+    <datalist id="SearchResults">
+      <option *ngFor="let sr of results" [value]="sr">{{sr}}</option>
+   </datalist>
     <div *ngIf="parent.touched && parent.invalid" class="alert alert-danger">
       <div *ngIf="parent.errors.required">Parent is required</div>
       </div>

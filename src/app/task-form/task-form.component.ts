@@ -16,6 +16,30 @@ export class TaskFormComponent implements OnInit {
     private route:ActivatedRoute) { }
     @Input() task: Task = new Task();
   taskArray:any=[];
+  results: any[] = [];
+  searchResults: any[] = [];
+  parentNameArray:any=[];
+  //search for parent for autofill suggestions
+  searchParentOnKeyUp(event) {
+		let input = event.target.value;
+		if (input.length > 0) {
+      this.results =this.searchFromArray( input);
+		}
+  }
+  searchFromArray( input){
+    this.parentNameArray=[];
+    const observable=this.taskService.search(input,"name");
+    observable.subscribe(response => {
+      console.log(response);
+     const  lengthOfResponse=Object.keys(response).length;
+      if(response!=0){
+        for(let i=0;i<lengthOfResponse;i++)
+        this.parentNameArray.push(response[i].name);
+      }
+    })
+    console.log(this.parentNameArray);
+    return(this.parentNameArray);
+  }
 
   //create task
   save(){
