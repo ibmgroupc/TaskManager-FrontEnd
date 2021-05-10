@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from '../Task';
 import { TaskService } from '../task.service';
 import Swal from 'sweetalert2';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-view',
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class ViewComponent implements OnInit {
 
-  constructor(private taskService:TaskService) { }
+  constructor(private taskService:TaskService, private router: Router) { }
   task:Task=new Task();
   taskArray:any=[];
   //seacrh task by name,parent,priority,start date or end date
@@ -87,6 +88,11 @@ export class ViewComponent implements OnInit {
     })
 
   }
+
+  edit(name: String){
+    this.router.navigate(['/update', name]);
+  }
+
   ngOnInit(): void {
     //display all tasks on page load
     const observable=this.taskService.getAllTasks();
