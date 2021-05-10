@@ -3,9 +3,11 @@
     <div class="col">
       <label>Name<span style = "color: red">*</span></label>
       <input [(ngModel)]='task.name' id='name' #name="ngModel" type='text' class="form-control" required>
+      <div *ngIf = "task.name">
       <label style = "font-size: smaller; margin-top: 2px;">Characters used {{task.name.length}}/100</label><br>
-    <div *ngIf=" name.touched && name.invalid" class="alert alert-danger">
-    <div *ngIf=" name.errors.required"> Name is required</div>
+    <!-- <div *ngIf=" name.touched && name.invalid" class="alert alert-danger">
+    <div *ngIf=" name.errors.required"> Name is required</div> -->
+    <!-- </div> -->
     </div>
       <label>Priority<span style = "color: red">*</span> {{task.priority}}</label>
       <input [(ngModel)]='task.priority'  type='range'  min='1' max="30" class="form-control"><br>
@@ -16,7 +18,10 @@
     </div>
     <div class="col">
       <label>Parent<span style = "color: red">*</span></label>
-      <input [(ngModel)]='task.parent' id ="parent" name="parent" #parent="ngModel" type='text' class="form-control" required><br>
+      <input [(ngModel)]='task.parent'  #parent="ngModel"  type='text' class="form-control"  (keyup)="searchParentOnKeyUp($event)" list="SearchResults" required><br>
+    <datalist id="SearchResults">
+      <option *ngFor="let sr of results" [value]="sr">{{sr}}</option>
+   </datalist><br>
       <div *ngIf=" parent.touched && parent.invalid" class="alert alert-danger">
       <div *ngIf=" parent.errors.required"> Parent is required</div></div>
       <label>Status<span style = "color: red">*</span></label>

@@ -78,7 +78,7 @@
     <td>{{task.status |titlecase}}</td>
     <td>{{task.type|titlecase}}</td>
     <td>{{task.occurance|titlecase}}</td>
-    <td><button class="btn btn-success" (click) = "edit(task.name)">Edit</button></td>
+    <td><button class="btn btn-success" (click) = "edit(task.id)">Edit</button></td>
     <td><button class="btn btn-primary">End</button></td>
     <td><button class="btn btn-danger"  (click)="deleteTask(task.id,i)">Delete</button></td>
   </tr>
