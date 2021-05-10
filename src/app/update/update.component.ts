@@ -17,7 +17,7 @@ export class UpdateComponent implements OnInit {
   results: any[] = [];
   searchResults: any[] = [];
   parentNameArray: any = [];
-
+  oldPriority:number;
   constructor(
     private taskService: TaskService,
     private router: Router,
@@ -51,6 +51,7 @@ export class UpdateComponent implements OnInit {
       (response) => {
         this.taskArray = response;
         this.task = this.taskArray;
+        this.oldPriority=this.task.priority;
         this.task.startdate = this.task.startDate.toString().split('T')[0];
         this.task.enddate = this.task.endDate.toString().split('T')[0];
       },
@@ -68,7 +69,7 @@ export class UpdateComponent implements OnInit {
     const observable = this.taskService.search(priority, 'priority');
     observable.subscribe((response) => {
       console.log(response);
-      if (response != 0) {
+      if (response != 0 && priority!=this.oldPriority) {
         Swal.fire('Task with priority already exists');
       } else {
         const observable = this.taskService.search(this.task.parent, 'name');
