@@ -89,8 +89,9 @@ export class ViewComponent implements OnInit {
 
   }
 
-  edit(name: String){
-    this.router.navigate(['/update', name]);
+//navigating to update page
+  edit(id: any){
+    this.router.navigate(['/update', id]);
   }
 
   ngOnInit(): void {
