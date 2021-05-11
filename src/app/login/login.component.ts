@@ -3,7 +3,7 @@ import { User } from '../User';
 import { UserService } from '../user.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { Task } from '../Task';
+
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router) {}
   userArray: any;
-  task: Task = new Task();
 
 //method to login into the application
   login(user: User) {
