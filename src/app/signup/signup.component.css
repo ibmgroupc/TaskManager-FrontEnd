@@ -94,3 +94,7 @@ body {
 .signup-form .text-center {
   color: black;
 }
+
+#pwd {
+  visibility: hidden;
+}

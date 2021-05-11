@@ -16,7 +16,7 @@
             class="form-control"
             name="name"
             placeholder="Name"
-            required="required"
+            required
           />
         </div>
       </div>
@@ -26,12 +26,12 @@
             ><i class="fa fa-paper-plane"></i
           ></span>
           <input
-            [(ngModel)]="user.email"
+            [(ngModel)]="user.emailId"
             type="email"
             class="form-control"
             name="email"
             placeholder="Email Address"
-            required="required"
+            required
           />
         </div>
       </div>
@@ -45,7 +45,8 @@
             name="mobileNumber"
             placeholder="Mobile Number"
             maxlength="10"
-            required="required"
+            pattern="[0-9]+"
+            required
           />
         </div>
       </div>
@@ -58,7 +59,7 @@
             class="form-control"
             name="username"
             placeholder="Username"
-            required="required"
+            required
           />
         </div>
       </div>
@@ -72,10 +73,16 @@
             class="form-control"
             name="password"
             placeholder="Password"
-            required="required"
+            (focus)="this.show()"
+            (blur)="this.hide()"
+            required
           />
         </div>
+        <div id="pwd">
+          <i>Password should be atleast 8 characters long.</i>
+        </div>
       </div>
+
       <div class="form-group">
         <div class="input-group">
           <span class="input-group-addon">
@@ -83,23 +90,28 @@
             <i class="fa fa-check"></i>
           </span>
           <input
+            [(ngModel)]="user.confirmPassword"
             type="password"
             class="form-control"
             name="confirm_password"
             placeholder="Confirm Password"
-            required="required"
+            required
           />
         </div>
       </div>
       <div class="form-group">
         <label class="checkbox-inline"
-          ><input type="checkbox" required="required" /> I accept the
+          ><input type="checkbox" id="tnc" required /> I accept the
           <a href="#">Terms of Use</a> &amp;
           <a href="#">Privacy Policy</a></label
         >
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-lg form-control">
+        <button
+          type="submit"
+          class="btn btn-primary btn-lg form-control"
+          (click)="this.create()"
+        >
           Sign Up
         </button>
       </div>

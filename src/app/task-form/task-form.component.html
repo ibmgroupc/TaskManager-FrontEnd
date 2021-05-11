@@ -1,65 +1,113 @@
 <div class="jumbotron form">
   <label><span>*</span>Required Fields</label>
-<div class='row'>
-  <div class="col">
-    <label>Name<span>*</span></label>
-    <input [(ngModel)]='task.name' id='name' #name="ngModel" type='text' class="form-control" maxlength="100" required>
-    <label class="subtext">Characters used {{task.name.length}}/100</label><br>
-   <div *ngIf=" name.touched && name.invalid" class="alert alert-danger">
-    <div *ngIf=" name.errors.required"> Name is required</div>
+  <div class="row">
+    <div class="col">
+      <label>Name<span>*</span></label>
+      <input
+        [(ngModel)]="task.name"
+        id="name"
+        #name="ngModel"
+        type="text"
+        class="form-control"
+        maxlength="100"
+        required
+      />
+      <label class="subtext">Characters used {{ task.name.length }}/100</label
+      ><br />
+      <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+        <div *ngIf="name.errors.required">Name is required</div>
+      </div>
+      <label>Priority<span>*</span> {{ task.priority }}</label>
+      <input
+        [(ngModel)]="task.priority"
+        #priority="ngModel"
+        type="range"
+        min="1"
+        max="30"
+        class="form-control"
+        required
+      /><br />
+      <label>Start Date<span>*</span></label>
+      <input
+        [(ngModel)]="task.startDate"
+        #startDate="ngModel"
+        type="datetime-local"
+        class="form-control"
+        required
+      /><br />
+      <div
+        *ngIf="startDate.touched && startDate.invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="startDate.errors.required">Start Date is required</div>
+      </div>
+      <label>End Date<span>*</span></label>
+      <input
+        [(ngModel)]="task.endDate"
+        #endDate="ngModel"
+        type="datetime-local"
+        class="form-control"
+        required
+      /><br />
+      <div
+        *ngIf="endDate.touched && endDate.invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="endDate.errors.required">End Date is required</div>
+      </div>
     </div>
-    <label>Priority<span>*</span> {{task.priority}}</label>
-    <input [(ngModel)]='task.priority' #priority="ngModel" type='range'  min='1' max="30"  class="form-control" required><br>
-    <label>Start Date<span>*</span></label>
-    <input [(ngModel)]='task.startDate' #startDate="ngModel" type='date' class="form-control" required><br>
-    <div *ngIf=" startDate.touched && startDate.invalid" class="alert alert-danger">
-      <div *ngIf="startDate.errors.required"> Start Date is required</div>
+    <div class="col">
+      <label>Parent<span>*</span></label>
+      <input
+        [(ngModel)]="task.parent"
+        #parent="ngModel"
+        type="text"
+        class="form-control"
+        (keyup)="searchParentOnKeyUp($event)"
+        list="SearchResults"
+        required
+      /><br />
+      <datalist id="SearchResults">
+        <option *ngFor="let sr of results" [value]="sr">{{ sr }}</option>
+      </datalist>
+      <div *ngIf="parent.touched && parent.invalid" class="alert alert-danger">
+        <div *ngIf="parent.errors.required">Parent is required</div>
       </div>
-    <label>End Date<span>*</span></label>
-    <input [(ngModel)]='task.endDate'  #endDate="ngModel" type='date' class="form-control" required><br>
-    <div *ngIf="endDate.touched && endDate.invalid" class="alert alert-danger">
-      <div *ngIf="endDate.errors.required">End Date is required</div>
-      </div>
-  </div>
-  <div class="col">
-    <label>Parent<span>*</span></label>
-    <input [(ngModel)]='task.parent'  #parent="ngModel"  type='text' class="form-control"  (keyup)="searchParentOnKeyUp($event)" list="SearchResults" required><br>
-    <datalist id="SearchResults">
-      <option *ngFor="let sr of results" [value]="sr">{{sr}}</option>
-   </datalist>
-    <div *ngIf="parent.touched && parent.invalid" class="alert alert-danger">
-      <div *ngIf="parent.errors.required">Parent is required</div>
-      </div>
-    <label>Status<span>*</span></label>
-    <select [(ngModel)]='task.status'#status="ngModel" class="form-control" required><br>
-      <option>TODO</option>
-      <option>DOING</option>
-      <option>DONE</option>
-      </select><br>
+      <label>Status<span>*</span></label>
+      <select
+        [(ngModel)]="task.status"
+        #status="ngModel"
+        class="form-control"
+        required
+      >
+        <br />
+        <option>TODO</option>
+        <option>DOING</option>
+        <option>DONE</option></select
+      ><br />
       <div *ngIf="status.touched && status.invalid" class="alert alert-danger">
         <div *ngIf="status.errors.required">End Date is required</div>
-        </div>
-    <label>Occurrence</label>
-    <select [(ngModel)]='task.occurance' class="form-control"><br>
-      <option>ONCE</option>
-      <option>HOURLY</option>
-      <option>DAILY</option>
-      <option>WEEKLY</option>
-      <option>MONTHLY</option>
-      <option>YEARLY</option>
-      </select><br>
-    <label>Type</label>
-    <select [(ngModel)]='task.type' class="form-control"><br>
-      <option>DEVELOPMENT</option>
-      <option>BUSINESS</option>
-      <option>FINANCE</option>
-      </select><br>
+      </div>
+      <label>Occurrence</label>
+      <select [(ngModel)]="task.occurance" class="form-control">
+        <br />
+        <option>ONCE</option>
+        <option>HOURLY</option>
+        <option>DAILY</option>
+        <option>WEEKLY</option>
+        <option>MONTHLY</option>
+        <option>YEARLY</option></select
+      ><br />
+      <label>Type</label>
+      <select [(ngModel)]="task.type" class="form-control">
+        <br />
+        <option>DEVELOPMENT</option>
+        <option>BUSINESS</option>
+        <option>FINANCE</option></select
+      ><br />
+    </div>
+  </div>
+  <div class="text-center">
+    <button class="btn btn-primary" (click)="save()">Create</button>
   </div>
 </div>
-<div class="text-center">
-<button class=" btn btn-primary" (click)='save()'>Create</button>
-</div>
-</div>
-
-
-
