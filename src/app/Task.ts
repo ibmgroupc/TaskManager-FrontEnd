@@ -9,7 +9,7 @@ export class Task{
   occurance:string = "ONCE";
   type:string = "DEVELOPMENT";
   searchField:string;
-  username:string;
+  username:string="user1";
   startdate: string;
   enddate: string;
 }
