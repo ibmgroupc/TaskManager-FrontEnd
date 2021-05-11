@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
 
 //method to login into the application
   login(user: User) {
-    let userName = <HTMLInputElement>document.getElementById("username");
     const observable = this.userService.login(user);
     observable.subscribe(
       (response) => {
@@ -30,8 +29,6 @@ export class LoginComponent implements OnInit {
           this.userArray = response;
           Swal.fire('Successfully logged in!', '', 'success');
           this.router.navigate(['/view']);
-          localStorage.setItem("currentUser", userName.value);
-          this.task.username = localStorage.getItem("currentUser");
         }
       },
       (error) => {
